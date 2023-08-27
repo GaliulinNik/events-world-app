@@ -24,7 +24,7 @@ export const Form = ({
         <form action={action}>
           <h1>Вход</h1>
           <SocialContainer />
-          <span>или зарегистрируй свой аккаунт</span>
+          <span>или зарегистрируйте свой аккаунт</span>
           <InputText type="email" placeholder="Почта" />
           <InputText type="password" placeholder="Пароль" />
           <a href="#">Забыли пароль</a>
@@ -37,11 +37,11 @@ export const Form = ({
         <form action={action}>
           <h1>Создайте пользователя</h1>
           <SocialContainer />
-          <span>или используй свою почту для входа</span>
+          <span>или используйте свою почту для входа</span>
           <InputText type="text" placeholder="Имя пользователя"></InputText>
           <InputText type="email" placeholder="Почта" />
           <InputText type="password" placeholder="Пароль" />
-          <Button text="Зарегистрирооватья" />
+          <Button text="Зарегистрироваться" />
         </form>
       );
       break;
