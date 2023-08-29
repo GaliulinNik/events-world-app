@@ -1,11 +1,20 @@
 import React from "react";
 import "./App.css";
-import { Login } from "./pages/login/login";
+//import { Login } from "./pages/login/login";
+import Login from "./pages/login/login";
+import { UserContext } from "./contexts/User";
+
+const User = {
+  role: "user",
+  name: "",
+};
 
 function App() {
   return (
     <div className="rootStyle">
-      <Login />
+      <UserContext.Provider value={User}>
+        <Login />
+      </UserContext.Provider>
     </div>
   );
 }

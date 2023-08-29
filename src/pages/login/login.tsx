@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./styles.css";
 import { Form } from "../../components/form";
 import { Overlay } from "../../components/overlay";
+import withLogger from "../../hocs/withLogger";
+import { UserContext } from "../../contexts/User";
 
 export const Login = () => {
+  const value = useContext(UserContext);
+  console.log("UserContext", value);
+
   const [rightPanelActive, setRightPanelActive] = useState(false);
   return (
     <div>
@@ -28,4 +33,5 @@ export const Login = () => {
   );
 };
 
-export default Login;
+//export default Login;
+export default withLogger(Login);
