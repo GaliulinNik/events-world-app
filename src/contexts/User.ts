@@ -5,4 +5,4 @@ const User = {
   name: "",
 };
 
-export const UserContext = createContext();
+export const UserContext = createContext(User);

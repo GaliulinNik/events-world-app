@@ -9,6 +9,8 @@ export const Login = () => {
   const value = useContext(UserContext);
   console.log("UserContext", value);
 
+  const [userName, setUserName] = useState<string>(""); //дописать
+
   const [rightPanelActive, setRightPanelActive] = useState(false);
   return (
     <div>

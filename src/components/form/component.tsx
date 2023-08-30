@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { InputText } from "../input-text";
-import { Button } from "../button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFaceKiss,
@@ -17,6 +16,28 @@ export const Form = ({
   action: string;
   type: string;
 }) => {
+  const handleClickSignIn = (event: any) => {
+    //обработка кнопки Войти
+    console.log("handleClickSignIn", event);
+  };
+  const handleClickSignUp = (event: any) => {
+    //обработка кнопки Зарегистрироваться
+    console.log("handleClickSignUp", event);
+  };
+
+  //забираем данные
+  const [userEmail, setUserEmail] = useState<string>("");
+  //обработка изменений
+  const handleChangeEmail = (event: any) => {
+    setUserEmail(event.target.value);
+    localStorage.setItem("userEmail", event.target.value); //записываем
+  };
+
+  useEffect(() => {
+    const userEmail = localStorage.getItem("userEmail") || ""; //забираем
+    setUserEmail(userEmail); //теперь при обновлении страницы запись остается
+  }, []);
+
   let content: JSX.Element;
   switch (type) {
     case "login":
@@ -25,10 +46,19 @@ export const Form = ({
           <h1>Вход</h1>
           <SocialContainer />
           <span>или зарегистрируйте свой аккаунт</span>
-          <InputText type="email" placeholder="Почта" />
-          <InputText type="password" placeholder="Пароль" />
+          <InputText
+            type="email"
+            placeholder="Почта"
+            onChange={(event: any) => handleChangeEmail(event)}
+            value={userEmail}
+          />
+          <InputText
+            type="password"
+            placeholder="Пароль"
+            onChange={(event: any) => console.log(event)}
+          />
           <a href="#">Забыли пароль</a>
-          <Button text="Войти" />
+          <button onClick={handleClickSignIn}>Войти</button>
         </form>
       );
       break;
@@ -38,10 +68,27 @@ export const Form = ({
           <h1>Создайте пользователя</h1>
           <SocialContainer />
           <span>или используйте свою почту для входа</span>
-          <InputText type="text" placeholder="Имя пользователя"></InputText>
-          <InputText type="email" placeholder="Почта" />
-          <InputText type="password" placeholder="Пароль" />
-          <Button text="Зарегистрироваться" />
+          <InputText
+            type="text"
+            placeholder="Имя пользователя"
+            onChange={(event: any) => console.log(event)}
+          />
+          <InputText
+            type="email"
+            placeholder="Почта"
+            onChange={(event: any) => console.log(event)}
+          />
+          <InputText
+            type="password"
+            placeholder="Пароль"
+            onChange={(event: any) => console.log(event)}
+          />
+          <InputText
+            type="password"
+            placeholder="Повтор пароля"
+            onChange={(event: any) => console.log(event)}
+          />
+          <button onClick={handleClickSignUp}>Зарегистрироваться</button>
         </form>
       );
       break;
