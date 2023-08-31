@@ -16,9 +16,21 @@ export const Form = ({
   action: string;
   type: string;
 }) => {
-  const handleClickSignIn = (event: any) => {
+  const handleClickSignIn = () => {
     //обработка кнопки Войти
-    console.log("handleClickSignIn", event);
+    fetch("http://localhost:3000", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: userEmail,
+        password: userPassword,
+      }),
+    }).then((response) => {
+      console.log("send data user");
+    });
   };
   const handleClickSignUp = (event: any) => {
     //обработка кнопки Зарегистрироваться
@@ -30,6 +42,13 @@ export const Form = ({
   //обработка изменений
   const handleChangeEmail = (event: any) => {
     setUserEmail(event.target.value);
+    localStorage.setItem("userEmail", event.target.value); //записываем
+  };
+  //забираем данные
+  const [userPassword, setUserPassword] = useState<string>("");
+  //обработка изменений
+  const handleChangePassword = (event: any) => {
+    setUserPassword(event.target.value);
     localStorage.setItem("userEmail", event.target.value); //записываем
   };
 
@@ -55,7 +74,8 @@ export const Form = ({
           <InputText
             type="password"
             placeholder="Пароль"
-            onChange={(event: any) => console.log(event)}
+            onChange={(event: any) => handleChangePassword(event)}
+            value={userPassword}
           />
           <a href="#">Забыли пароль</a>
           <button onClick={handleClickSignIn}>Войти</button>
