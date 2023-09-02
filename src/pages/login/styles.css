@@ -24,6 +24,21 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  color: #cf1a1a;
+  font-size: 10px;
+  font-weight: 50;
+  line-height: 0.5px;
+  letter-spacing: 0.5px;
+  margin: 0px 0 0px;
+  /* clear: left;
+  align-self: left;
+  float: left;
+  justify-content: left;
+  align-items: left;
+  text-align: left !important; */
+}
+
 p {
   font-size: 14px;
   font-weight: 100;
