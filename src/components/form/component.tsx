@@ -63,6 +63,12 @@ export const Form = ({
     ) {
       errors.userEmail = "Указана некорректная почта";
     }
+    if (
+      errors.userPassword == null &&
+      !values.userPassword.match(/^(?=.*[a-z]).{1,8}$/)
+    ) {
+      errors.userPassword = "Некорректный пароль [a-z от 4 до 8]";
+    }
     return errors;
   };
 
