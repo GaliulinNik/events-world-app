@@ -4,7 +4,7 @@ import { BarChart } from "../../components/chart";
 
 export const Home = () => {
   return (
-    <div>
+    <div className="BarChart">
       <BarChart />
     </div>
   );
